@@ -2,6 +2,15 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+export PYTHONSTARTUP=$HOME/.python.py
+
+
+shopt -s expand_aliases
+# Must set this option, else script will not expand aliases.
+
 # Normal Colors
 Black='\e[0;30m'        # Black
 Red='\e[0;31m'          # Red
@@ -34,8 +43,7 @@ On_White='\e[47m'       # White
 
 NC="\e[m"               # Color Reset
 
-echo -e "${BCyan}This is BASH ${BRed}${BASH_VERSION%.*}${BCyan}\
-	- DISPLAY on ${BRed}$DISPLAY${NC}\n"
+echo -e "${BCyan}This is BASH ${BRed}${BASH_VERSION%.*}${BCyan} - DISPLAY on ${BRed}$DISPLAY${NC}\n"
 date
 if [ -x /usr/games/fortune ]; then
 	cookie=$(/usr/games/fortune -s)     # Makes our day a bit more fun.... :-)
@@ -116,6 +124,7 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
+    alias cdp='cd ~/Python2.5/Gray\ Hat\ Python/'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -158,6 +167,15 @@ fi
 
 function _exit()              # Function to run upon exit of shell.
 {
-	    echo -e "${BRed}Hasta la vista, baby!${NC}"
+	    echo -e "${BGreen}${On_Purple}  Hasta la vista!  ${NC}"
+	    sleep 1
+	    command exit 0
 }
 trap _exit EXIT
+
+# added paths
+export PATH="$PATH"
+
+if [ -f ~/.Xresources ]; then
+	xrdb ~/.Xresources
+fi

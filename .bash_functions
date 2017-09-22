@@ -22,7 +22,7 @@ else
 		if [ ${#ret} -eq 0 ]; then
 			echo -en ${ALERT}"I didn't match any flags. Please check 'help $param' for more information.\n"
 		else	
-			echo -en ${BPurple}"${ret}\n"
+			echo -en ${BYellow}"${ret}\n"
 		fi
 	fi
 fi
