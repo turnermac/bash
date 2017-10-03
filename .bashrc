@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-export PYTHONSTARTUP=$HOME/.python.py
+export PYTHONSTARTUP=$HOME/.pythonrc
 
 
 shopt -s expand_aliases

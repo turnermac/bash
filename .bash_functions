@@ -27,3 +27,7 @@ else
 	fi
 fi
 }
+
+function oracle {
+echo "$(shuf -n 33 $HOME/Downloads/english-words/words.txt --random-source=/dev/urandom | tr '\n' ' ')"
+}
